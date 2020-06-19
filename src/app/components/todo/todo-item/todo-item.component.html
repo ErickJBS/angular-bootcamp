@@ -1,1 +1,5 @@
-<p>todo-item works!</p>
+<div>
+    <p>{{ todo.content }}</p>
+    <p>{{ todo.date | date }}</p>
+    <button (click)="onDeleteTodo()">X</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '@services/data.service';
 
 @Component({
   selector: 'app-todo-editor',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoEditorComponent implements OnInit {
 
-  constructor() { }
+  content: string = "";
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+  }
+
+  addTodo() {
+    this.data.addTodo({
+      date: new Date(),
+      content: this.content
+    })
+    this.content = "";
   }
 
 }
