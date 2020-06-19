@@ -1,5 +1,14 @@
-<div>
-    <p>{{ todo.content }}</p>
-    <p>{{ todo.date | date }}</p>
-    <button (click)="onDeleteTodo()">X</button>
+<div class="card px-4 py-2">
+    <div class="card-body p-0">
+        <div class="row no-gutters ml-4 align-items-center">
+            <input type="checkbox" [(ngModel)]="done" class="form-check-input mt-0 checkbox-md">
+            <div class="item-content col">
+                <p class="todo-content mb-0" [ngClass]="{'crossed': done}">{{ todo.content }}</p>
+                <p class="todo-date mb-0">{{ todo.date | date }}</p>
+            </div>
+            <button type="button" class="btn btn-sm btn-danger" (click)="onDeleteTodo()">
+                <span class="fas fa-trash"></span>
+            </button>
+        </div>
+    </div>
 </div>
