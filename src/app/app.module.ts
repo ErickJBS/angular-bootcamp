@@ -11,6 +11,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { TodoEditorComponent } from './components/todo/todo-editor/todo-editor.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TodoEditorComponent } from './components/todo/todo-editor/todo-editor.c
     HeaderComponent,
     TodoComponent,
     FooterComponent,
-    TodoEditorComponent
+    TodoEditorComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
