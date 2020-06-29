@@ -17,4 +17,7 @@ export class HeaderComponent implements OnInit {
     this.auth.currentUser.subscribe(user => this.user = user);
   }
 
+  onSignOut(): void {
+    this.auth.signOut();
+  }
 }

@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export class AuthService {
 
   private userSubject = new BehaviorSubject<User>(null);
+  private user: User;
 
   constructor() { }
 
@@ -22,6 +23,7 @@ export class AuthService {
       name: 'Peter Parker',
       avatarUrl: 'assets/profile_picture.png'
     } 
+    this.user = user;
     this.userSubject.next(user);
     return of(user);
   }
@@ -39,6 +41,14 @@ export class AuthService {
   signOut(): void {
     this.saveUser(null);
     this.userSubject.next(null);
+    this.user = null;
+  }
+
+  isLoggedIn(): boolean {
+    if (!this.user) {
+      this.user = this.getUser();
+    }
+    return !!this.user;
   }
 
   private saveUser(user: User): void {
@@ -49,4 +59,5 @@ export class AuthService {
     const saved = localStorage.getItem('user');
     return JSON.parse(saved);
   }
+
 }

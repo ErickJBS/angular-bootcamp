@@ -1,7 +1,17 @@
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand ml-3">TODO APP</a>
-  <form class="form-inline">
+  <form class="form-inline" *ngIf="user">
     <p class="header-text">{{user?.name || ''}}</p>
-    <img class="avatar rounded-circle" src="{{user?.avatarUrl}}"/>
+    <img class="avatar rounded-circle" src="{{user?.avatarUrl}}" />
+    <span class="nav-item">
+      <a class="nav-link" (click)="onSignOut()">
+        <i class="fa fa-sign-out-alt" aria-hidden="true"></i> SignOut</a>
+    </span>
+  </form>
+  <form class="form-inline" *ngIf="!user">
+    <span class="nav-item">
+      <a class="nav-link" [routerLink]="['/signIn']">
+        <i class="fas fa-sign-in-alt"></i> SignIn</a>
+    </span>
   </form>
 </nav>
