@@ -23,6 +23,7 @@ export class AuthService {
       name: 'Peter Parker',
       avatarUrl: 'assets/profile_picture.png'
     } 
+    this.saveUser(user);
     this.user = user;
     this.userSubject.next(user);
     return of(user);

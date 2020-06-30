@@ -1,1 +1,41 @@
-<p>sign-up works!</p>
+<div class="card mt-5 card-form p-0">
+  <div class="card-header">
+    <h1 class="h3 text-center">Sign Up</h1>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSignUp()" novalidate [formGroup]="signUpForm">
+
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="inputEmail" 
+          [ngClass]="{'is-invalid': formErrors.email}" placeholder="Email address" required autofocus>
+        <div class="invalid-feedback" *ngIf="formErrors.email"> {{ formErrors.email }} </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input formControlName="name" type="text" class="form-control" id="inputName"
+          [ngClass]="{'is-invalid': formErrors.name}" placeholder="Name" required>
+        <div class="invalid-feedback" *ngIf="formErrors.name"> {{ formErrors.name }} </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="inputPassword"
+        [ngClass]="{'is-invalid': formErrors.password}" placeholder="Password">
+        <div class="invalid-feedback" *ngIf="formErrors.password"> {{ formErrors.password }} </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+          [ngClass]="{'is-invalid': formErrors.confirmPassword}" placeholder="Password">
+        <div class="invalid-feedback" *ngIf="formErrors.confirmPassword"> {{ formErrors.confirmPassword }} </div>
+      </div>
+  
+      <div class="row justify-content-center">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
