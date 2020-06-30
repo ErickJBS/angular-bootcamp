@@ -4,8 +4,8 @@
     <p class="header-text">{{user?.name || ''}}</p>
     <img class="avatar rounded-circle" src="{{user?.avatarUrl}}" />
     <span class="nav-item">
-      <a class="nav-link" (click)="onSignOut()">
-        <i class="fa fa-sign-out-alt" aria-hidden="true"></i> SignOut</a>
+      <a class="nav-link" href="#" (click)="onSignOut()">
+        <i class="fa fa-sign-out-alt"></i> SignOut</a>
     </span>
   </form>
   <form class="form-inline" *ngIf="!user">

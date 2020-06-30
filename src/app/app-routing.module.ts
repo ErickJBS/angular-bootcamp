@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: '', component: CleanComponent, children: [
     { path: 'signIn', component: SignInComponent },
     { path: 'signUp', component: SignUpComponent }
-  ]}
+  ]},
+  { path: '**', redirectTo: 'todo', pathMatch: 'full' }
 ]
 
 @NgModule({
