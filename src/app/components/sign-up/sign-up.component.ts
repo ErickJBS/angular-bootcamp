@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
 import { Router } from '@angular/router';
 
@@ -50,9 +50,8 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      // TODO: Add matching password validation
       confirmPassword: ['', Validators.required]
-    });
+    }, { validator: this.passwordMatches });
 
     this.signUpForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -74,6 +73,12 @@ export class SignUpComponent implements OnInit {
           this.formErrors[field] += errorMessages[key] + ' ';
         }
       }
+    }
+  }
+
+  passwordMatches(control: AbstractControl): { mismatch: boolean } {
+    if (control.get('password').value !== control.get('confirmPassword').value) {
+      return { mismatch: true };
     }
   }
 
