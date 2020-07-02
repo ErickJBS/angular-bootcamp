@@ -5,8 +5,9 @@ import { MainComponent } from './layout/main/main.component';
 import { TodoComponent } from '@components/todo/todo.component';
 import { SignInComponent } from '@components/sign-in/sign-in.component';
 import { SignUpComponent } from '@components/sign-up/sign-up.component';
-import { AuthGuard } from '@services/auth.guard';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { CleanComponent } from './layout/clean/clean.component';
+import { LeavePageGuard } from './guards/leave-page.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'todo', pathMatch: 'full' },
@@ -15,7 +16,7 @@ const routes: Routes = [
   ]},
   { path: '', component: CleanComponent, children: [
     { path: 'signIn', component: SignInComponent },
-    { path: 'signUp', component: SignUpComponent }
+    { path: 'signUp', component: SignUpComponent, canDeactivate: [ LeavePageGuard ] }
   ]},
   { path: '**', redirectTo: 'todo', pathMatch: 'full' }
 ]
